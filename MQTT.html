@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>MQTT</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<style>
+		#table1 {
+			margin-left: -1%;
+			margin-top: 3%;
+			background-color: #5295c4;
+			height: 300px;
+			overflow-y: scroll;
+		}
+		#table3 {
+			margin-left: .5%;
+			margin-top: 3%;
+			background-color: #5295c4;
+			height: 300px;
+			overflow-y: scroll;
+		} 
+		#table2 {
+			margin-left: .5%;
+			margin-right: .5;
+			margin-top: 3%;
+			background-color: #5295c4;
+			height: 300px;
+			overflow-y: scroll;
+		}
+	</style>
+</head>
+
+<body background="pic.jpg">
+	<center>
+		<h1 style="color: #b4caed; font-size: 50px; font-weight: bold;">Aeromel's MQTT</h1>
+	</center>
+
+	<div class="container" style="margin-top: 5%;">
+		<div class="col-sm-4 bg-primary" style="margin-top: 1.2%; border-style:solid; border-color:black; margin-left: -1%;">
+			<h3>Broker</h3>
+			<div class="form-group">
+				<label for="address">Address:</label>
+				<input value="wss://test.mosquitto.org:8081/mqtt" type="text" class="form-control input-sm" id="address">
+			</div>
+			<center>
+				<button type="button" class="btn btn-success" id='btnConnect'>Connect</button>
+				<button type="button" class="btn btn-success" id='btnDisconnect'>Disconnect</button>
+			</center>
+
+			<div class="form-group">
+				<label for="status">Status:</label>
+				<input type="text" class="form-control input-sm" id="status">
+			</div>
+		</div>
+		<div class="col-sm-4 bg-primary" style="margin-top: 2.5%; border-style:solid; border-color:black; margin-left: .5%;margin-right: .5%;">
+			<h3>Subscribe</h3>
+			<div class="form-group">
+				<span id="span"></span><br>
+				<label>Topic:</label>
+				<input type="text" class="form-control input-sm" id="Subscribe-topic">
+			</div>
+			<center>
+				<button type="button" class="btn btn-success" id='btnSubscribe'>Subscribe</button>
+				<button type="button" class="btn btn-success" id='btnUnsubscribe'>Unsubscribe</button>
+			</center><br>
+		</div>
+		<div class="col-sm-4 bg-primary" style="border-style:solid; border-color:black; margin-right: -1%;">
+			<h3>Publish</h3>
+			<div class="form-group">
+				<label for="Publish-topic" value="demo">Topic:</label>
+				<input type="text" class="form-control input-sm" id="Publish-topic"><br>
+				<label for="Publish-payload">Payload:</label>
+				<input type="text" class="form-control input-sm" id="Publish-payload">
+			</div>
+			<center>
+				<button type="button" class="btn btn-success" id='btnPublish'>Publish</button>
+			</center><br>
+		</div>
+	</div>
+
+	<div class="container" style="margin-top: 2%;">
+		<div class="col-sm-4 bg-primary" id="table1">
+			<center>
+				<h2>Received</h2>
+			</center>
+			<hr>
+			<table class="table" id="tblReceive">
+				<thead>
+					<tr>
+						<th>Topic</th>
+						<th>Payload</th>
+						<th>Time Stamp</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+		</div>
+		<div class="col-sm-4 bg-primary" id="table2">
+			<center>
+				<h2>Subscribed</h2>
+			</center>
+			<hr>
+			<table class="table" id="tblSubscribe">
+				<thead>
+					<tr>
+						<th>Topic</th>
+						<th>Time Stamp</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+		</div>
+		<div class="col-sm-4 bg-primary" id="table3">
+			<center>
+				<h2>Published</h2>
+			</center>
+			<hr>
+			<table class="table" id="tblPublish">
+				<thead>
+					<tr>
+						<th>Topic</th>
+						<th>Payload</th>
+						<th>Time Stamp</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<script src="mqtt.js"></script>
+	<script src="controller.js"></script>
+</body>
+
+</html>
