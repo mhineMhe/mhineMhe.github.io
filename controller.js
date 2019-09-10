@@ -2,7 +2,6 @@
 $(document).ready(function () {
   var broker = $('#address').val();
   var data = '';
-  var x = '';
   var con = false;
   var a = false;
   $('#btnDisconnect').attr('disabled', true);
@@ -72,7 +71,6 @@ $(document).ready(function () {
         client.subscribe($('#Subscribe-topic').val());
         data = 'Subscribed to  ' + $('#Subscribe-topic').val();
         $('#span').html(data);
-        x = $('#Subscribe-topic').val();
         $('#btnUnsubscribe').attr('disabled', false);
         $('#btnPublish').attr('disabled', false);
         var dt = new Date();
